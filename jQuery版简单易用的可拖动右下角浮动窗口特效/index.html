@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery版简单易用的可拖动右下角浮动窗口特效</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body class='box box-3'>
+
+<!-- 代码部分begin -->
+<dl>
+	<dd>代理人联系信息<b id="small_button" class="up"></b></dd>
+	<ul>
+		<li><span>姓&nbsp;&nbsp;&nbsp;名：</span><i>测试姓名</i></li>
+		<li><span>手机号：</span><i>123456789</i></li>
+		<li><span>邮&nbsp;&nbsp;&nbsp;箱：</span><i>test@test.com</i></li>
+		<li><span>电话：</span><i>0000-0000000</i></li>
+	</ul>            
+</dl>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/drag.js"></script>
+<script>
+	$(function(){
+		$('.box-3 dl').each(function(){
+			$(this).dragging({
+				move : 'both',
+				randomPosition : false
+			});
+		});
+	});
+</script>
+<!-- 代码部分end -->
+
+ </body>
+ </html>
