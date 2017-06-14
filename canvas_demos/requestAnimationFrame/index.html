@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+    <canvas id="canvas" width="350" height="350"></canvas>
+<script>
+	/*requestAnimationFrame的兼容
+	(function () {
+		var lastTime = 0;
+		var vendors = ['ms', 'moz', 'webkit', 'o'];
+		for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+			window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+			window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+		}
+
+		if (!window.requestAnimationFrame) window.requestAnimationFrame = function (callback, element) {
+			var currTime = new Date().getTime();
+			var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+			var id = window.setTimeout(function () {
+						callback(currTime + timeToCall);
+					},
+					timeToCall);
+			lastTime = currTime + timeToCall;
+			return id;
+		};
+
+		if (!window.cancelAnimationFrame) window.cancelAnimationFrame = function (id) {
+			clearTimeout(id);
+		};
+	}());
+	*/
+
+
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	ctx.lineCap = "round";
+
+	// 初始点
+	var t = 1;
+	var step = 100;  //步进，控制动画的快慢（或者说是点的密度）
+
+	// 全部顶点
+	var vertices = [
+      {x:0,y:0},{x:300,y:100},{x:80,y:200},{x:10,y:100},{x:0,y:0}
+    ];
+
+	// 画一个框架
+	ctx.lineWidth = 1;
+	ctx.beginPath();
+	ctx.moveTo(vertices[0].x, vertices[0].y);
+	for(var i=1;i<vertices.length;i++){
+	    ctx.lineTo(vertices[i].x,vertices[i].y)
+    }
+	ctx.stroke();
+
+
+	// 开始动画
+	ctx.lineWidth = 5;
+	ctx.strokeStyle = "blue";
+	// 调用插值函数
+	var points = calcWaypoints(vertices);
+	// requestAnimationFrame 动画
+	animate();
+
+	// 插值函数
+	function calcWaypoints(vertices) {
+		var waypoints = [];
+		for (var i = 1; i < vertices.length; i++) {
+			var pt0 = vertices[i - 1];
+			var pt1 = vertices[i];
+			var dx = pt1.x - pt0.x;
+			var dy = pt1.y - pt0.y;
+			for (var j = 0; j < step; j++) {
+				var x = pt0.x + dx * j / step;
+				var y = pt0.y + dy * j / step;
+				waypoints.push({
+					x: x,
+					y: y
+				});
+			}
+		}
+		return (waypoints);
+	}
+    //动画循环函数
+	function animate() {
+		if (t < points.length - 1) {
+			requestAnimationFrame(animate);
+		}
+		//
+		ctx.beginPath();
+		ctx.moveTo(points[t - 1].x, points[t - 1].y);
+		ctx.lineTo(points[t].x, points[t].y);
+		ctx.stroke();
+		// t的递增（动画继续的条件）
+		t++;
+	}
+</script>
+</body>
+</html>
