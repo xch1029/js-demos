@@ -91,7 +91,8 @@
 		if (t < points.length - 1) {
 			requestAnimationFrame(animate);
 		}
-		//
+		//点移动,线移动
+        //ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.beginPath();
 		ctx.moveTo(points[t - 1].x, points[t - 1].y);
 		ctx.lineTo(points[t].x, points[t].y);
