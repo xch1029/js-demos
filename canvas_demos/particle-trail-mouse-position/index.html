@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+    var PI_2 = 2*Math.PI;
+    var canvas = document.querySelector('#canvas');
+    var context = canvas.getContext('2d');
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    var particles = [];
+
+    animate();
+    function randomColor(){
+    	var r = 50+(Math.floor(Math.random()*205));
+    	var g = 0;
+    	var b = 50+(Math.floor(Math.random()*205));
+    	return "rgba("+ r +","+ g +","+ b +",0.5)"
+
+    }
+    function Particle(x,y){
+    	this.x = x;
+    	this.y = y;
+	    this.dy = 1 + (Math.random()*3);
+	    this.dx = -1 + (Math.random()*2);
+	    this.color = randomColor();
+	    this.size = 2 + Math.floor(Math.random()*4);
+	    this.draw = function(){
+	    	context.beginPath();
+		    context.arc(this.x,this.y,this.size,0,PI_2,false)
+		    context.fillStyle = this.color;
+		    context.fill();
+		    this.update();
+        };
+        this.update = function () {
+            this.y += this.dy;
+            this.X += this.dx;
+        }
+    }
+
+    canvas.addEventListener('mousemove',function(e){
+    	var mouseX,mouseY;
+    	if(e.offsetX){
+    		mouseX = e.offsetX;
+    		mouseY = e.offsetY;
+        }else if(e.layerX){
+		    mouseX = e.layerX;
+		    mouseY = e.layerY;
+        }
+        for(var i=0;i<3;i++){
+        	var p = new Particle(mouseX,mouseY);
+        	particles.push(p)
+        }
+        console.log('小球数：'+ particles.length)
+    },false);
+
+    function animate(){
+    	context.clearRect(0,0,window.innerWidth,window.innerHeight);
+    	draw();
+	    window.requestAnimationFrame(animate);
+    }
+    function draw(){
+	    for(var i=0; i<particles.length; i++){
+	    	if(particles[i].y>window.innerHeight){
+	    		//飞出屏幕，则一处小球
+	    		particles.splice(i,1)
+            }
+		    particles[i].draw();
+	    }
+    }
+
+    window.addEventListener("resize", function() {
+	    canvas.height = window.innerHeight;
+	    canvas.width = window.innerWidth;
+    });
+</script>
+</body>
+</html>
