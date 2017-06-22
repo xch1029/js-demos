@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片上传，预览</title>
+</head>
+<body>
+    <input type="file">
+    <div class="show"><img src="" alt=""></div>
+    <script>
+        //window.URL只支持现代浏览器
+        var pic = document.querySelector('input');
+        pic.onchange = function(e){
+        	var files = e.target.files,
+                file;
+        	if(files&&files.length>0){
+        		file = files[0]
+            }
+
+            var show = document.querySelector('.show img');
+	        var URL = window.URL || window.webkitURL;
+	        var imgURL = URL.createObjectURL(file);
+	        show.src = imgURL;
+            //释放url，提高性能
+	        //URL.revokeObjectURL(imgURL);
+        }
+    </script>
+</body>
+</html>
