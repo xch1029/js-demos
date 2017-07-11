@@ -1,0 +1,13 @@
+body{
+    background-color: #ffd54f;
+}
+.counter{
+    color: #333;
+    font-size: 4em;
+    text-align: center;
+}
+.counter:before{
+    content: "my birthday is in";
+    display: block;
+    font-size: 2rem;
+}
