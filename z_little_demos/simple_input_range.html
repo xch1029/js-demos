@@ -1,0 +1,44 @@
+<!--
+    1.css变量
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>input range</title>
+    <style>
+        :root{
+            --color-bg: #f44336;
+            --slider-color: white;
+        }
+        body{
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--color-bg);
+            align-items: center;
+            justify-content: center;
+        }
+        .slider{
+            -webkit-appearance:none;    /*清除浏览器自定义样式*/
+            width: 10rem;
+            height: 0.25rem;
+            outline: none;
+            border-radius: 0.25rem;
+        }
+        .slider::-webkit-slider-thumb{
+            -webkit-appearance:none;    /*清除浏览器自定义样式*/
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: var(--color-bg);
+            border: .25rem solid white;
+            border-radius: 1rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <input type="range" min="0" max="100" value="70" class="slider">
+</body>
+</html>
