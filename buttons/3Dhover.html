@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3D hover</title>
+    <style>
+        body {
+            background: #428b32;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+        }
+        figure{
+            width: 200px;
+            height: 60px;
+            cursor: pointer;
+            perspective: 500px;
+        }
+        figure div{
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: 0.25s;
+        }
+        figure:hover div{
+            transform: rotateX(-90deg);
+        }
+        span {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            box-sizing: border-box;
+            border: 5px solid #fff;
+            line-height: 50px;
+            font-size: 17pt;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        span:nth-child(1) {
+            color: #fff;
+            transform: translate3d(0, 0, 30px);
+        }
+        span:nth-child(2) {
+            color: #428b32;
+            background: #fff;
+            transform: rotateX(90deg) translate3d(0, 0, 30px);
+        }
+    </style>
+</head>
+<body>
+    <figure>
+        <div>
+            <span>Hover Me</span>
+            <span>Button</span>
+        </div>
+    </figure>
+</body>
+</html>
