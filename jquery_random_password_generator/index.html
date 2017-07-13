@@ -1,0 +1,48 @@
+<!--
+    1.自适应
+    2.打印样式
+    3.保存为txt
+    4.渐变
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机密码</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="intro-box">
+        <h2>Random password generator</h2>
+    </div>
+    <div class="wrapper">
+        <div class="fields-box">
+            <label for="new-chars">
+                <span>Enter posible chars</span>
+                <input type="text" id="new-chars">
+            </label>
+            <label for="new-length">
+                <span>Set string length</span>
+                <input type="number" id="new-length" min="1">
+            </label>
+            <label for="new-num">
+                <span>Set items number</span>
+                <input type="number" id="new-num" min="1">
+            </label>
+        </div>
+        <div class="table-box">
+            <table>
+                <!-- Dynamic content! -->
+            </table>
+        </div>
+        <div class="buttons-box">
+            <button onclick="download();">Save</button>
+            <button onclick="printTable();">Print</button>
+        </div>
+    </div>
+
+    <script src="../static/js/jquery-3.2.1.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

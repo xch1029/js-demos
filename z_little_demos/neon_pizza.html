@@ -1,0 +1,57 @@
+<!--
+    1.css动画
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>霓虹灯披萨</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #2a1765
+        }
+        .flex-container{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .title{
+            margin-bottom: 32px;
+            font-size: 60px;
+            color:#ffccee;
+            text-shadow: 1px 4px 6px #2a1765,0 0 0 #000,1px 4px 6px #2a1765;
+            animation: txt-blink 1.2s infinite;
+        }
+        @keyframes txt-blink {
+            0%{
+                opacity: 0.2;
+                text-shadow: 1px 4px 6px #2a1765, 0 0 0 #000, 1px 4px 6px #2a1765;
+            }
+            25%, 65%{
+                opacity: 1;
+                text-shadow: 0 0 6px #fec6d8, 0 0 10px #eba1d3, 0 0 20px #fe7f9c, 0 0 30px #fe7f9c, 0 0 40px #fe7f9c, 0 0 55px #fe7f9c, 0 0 60px #fe7f9c;
+            }
+            90%{
+                opacity: 0.2;
+                text-shadow: 1px 4px 6px #2a1765, 0 0 0 #000, 1px 4px 6px #2a1765;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="title">Pizza Day</div>
+        <div class="pizza"></div>
+    </div>
+</body>
+</html>
