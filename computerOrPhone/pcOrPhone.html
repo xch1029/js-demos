@@ -1,0 +1,39 @@
+<!--
+    主要变量：navigator
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>检测浏览器</title>
+</head>
+<body>
+<h1>判断是电脑浏览器还是手机端浏览器，并根据不同的终端跳转到不同的网址</h1>
+<script>
+    function checkPlatform() {
+        if(/android/i.test(navigator.userAgent)){
+            console.log("This is Android'browser.");//这是Android平台下浏览器
+        }
+        if(/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)){
+            console.log("This is iOS'browser.");//这是iOS平台下浏览器
+        }
+        if(/Linux/i.test(navigator.userAgent)){
+            console.log("This is Linux'browser.");//这是Linux平台下浏览器
+        }
+
+        if(/Linux/i.test(navigator.platform)){
+            console.log("This is Linux operating system.");//这是Linux操作系统平台
+        }
+
+        if(/MicroMessenger/i.test(navigator.userAgent)){
+            console.log("This is MicroMessenger'browser.");//这是微信平台下浏览器
+        }
+    }
+    console.log(navigator);
+    checkPlatform()
+</script>
+</body>
+</html>
