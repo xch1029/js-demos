@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>呼吸灯</title>
+    <style>
+        body{
+            background-color: #053c5e;
+        }
+        .orb{
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: #1f7a8c;
+            margin: auto;
+            margin-top: 200px;
+        }
+        .orb_1{
+            animation-name: orb_1;
+            animation-duration: 3s;
+            animation-delay: 0s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-in-out;
+        }
+        @keyframes orb_1 {
+            from{
+                transform: scale(1);
+                background: #db222a;
+            }
+            to{
+                transform: scale(1.2);
+                background: #bfdbf7;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="orb orb_1"></div>
+</body>
+</html>
