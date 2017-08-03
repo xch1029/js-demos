@@ -110,7 +110,7 @@
             const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
             key.classList.add('playing')
         }
-        window.addEventListener('keydown', highLight)
+        window.addEventListener('keydown', highLight);
         const keys = Array.from(document.querySelectorAll('.key'));
         keys.forEach(key=>key.addEventListener('transitionend',removeTransition))
     </script>
