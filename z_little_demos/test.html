@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function orderWeight(strng) {
+            var arr = strng.split(' ').map(Number);
+            return arr.sort((a,b)=>{
+              var sumA = String(a).split('').reduce((sum,c)=>Number(sum)+Number(c));
+              var sumB = String(b).split('').reduce((sum,c)=>Number(sum)+Number(c));
+              if(sumA>sumB) return 1;
+              if(sumA<sumB) return -1;
+              if(sumA===sumB){
+                return String(a)>String(b)?1:-1
+              }
+            }).join(' ')
+        }
+        console.log(orderWeight('56 65 74 100 99 68 86 90 180'))
+    </script>
+</body>
+</html>
