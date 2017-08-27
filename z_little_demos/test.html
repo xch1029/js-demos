@@ -9,19 +9,19 @@
 </head>
 <body>
     <script>
-        function orderWeight(strng) {
-            var arr = strng.split(' ').map(Number);
-            return arr.sort((a,b)=>{
-              var sumA = String(a).split('').reduce((sum,c)=>Number(sum)+Number(c));
-              var sumB = String(b).split('').reduce((sum,c)=>Number(sum)+Number(c));
-              if(sumA>sumB) return 1;
-              if(sumA<sumB) return -1;
-              if(sumA===sumB){
-                return String(a)>String(b)?1:-1
-              }
-            }).join(' ')
+        function expandedForm(num) {
+            var numArr = String(num).split('');
+            var length = numArr.length;
+            return numArr
+                .map((item,index)=>{
+                    return item*Math.pow(10,length-index-1)
+                })
+                .filter(item=>item>0)
+                .join(' + ')
+
         }
-        console.log(orderWeight('56 65 74 100 99 68 86 90 180'))
+        console.log(expandedForm(70304))
+        console.log()
     </script>
 </body>
 </html>

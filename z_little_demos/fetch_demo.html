@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>fetch的完整用法</title>
+</head>
+<body>
+	<script>
+		//fetch的post用法
+		var url = 'http://www.easy-mock.com/mock/5981d45ba1d30433d8511a63/example/getFiles'
+		fetch(url,
+		{
+		    headers: {
+		      'Accept': 'application/json',
+		      'Content-Type': 'application/json'
+		    },
+		    method: "POST",
+		    body: JSON.stringify({a: 1, b: 2})
+		})
+		//这里有json(),text()方法等，这里打印所有属性和方法
+		.then(res=>{
+			for(let i in res){
+				console.log(i)
+			}
+			return res.json()
+		})
+		.then(json=>{
+			console.log(json)
+		})
+		.catch(function(res){ console.log(res) })
+	</script>
+</body>
+</html>
