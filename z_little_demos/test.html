@@ -9,37 +9,18 @@
 </head>
 <body>
     <script>
-        function validSolution(board){
-            var isNotSame = board.every(item=>[...new Set(item)].length===9)
-            if(!isNotSame) return false
-            var h1 = board[0].reduce((sum,item)=>sum+item);
-            var hIsEqual = board.every(item=>item.reduce((sum,i)=>sum+i)===h1)
-            if(!hIsEqual) return false;
-            var v1 = board.reduce((sum,item)=>{ return sum+item[0]},0);
-            if(v1!==h1) return false
-            for(let i=0;i<9;i++){
-              var tmpSum = board.reduce((sum,item)=>{return sum+item[i]},0);
-              if(v1!==tmpSum) return false
-            }
-            var arr3_3 = [];
-            for(let i=0;i<3;i++){
-                for(let j=0;j<3;j++){
-                  arr3_3.push(board[i][j])
-                }
-            }
-            if([...new Set(arr3_3.slice(0,9))].length!==9) return false
-            return true
+        function race(v1, v2, g) {
+            // your code
+            let time = g/(v2-v1)
+            let h = parseInt(time);
+            let m = (time-h)*60;
+            let s = (m - parseInt(m))*60;
+
+            return [h,m,s].map(x=>parseInt(x))
         }
-        console.log(validSolution([
-          [1, 2, 3, 4, 5, 6, 7, 8, 9],
-          [2, 3, 1, 5, 6, 4, 8, 9, 7],
-          [3, 1, 2, 6, 4, 5, 9, 7, 8],
-          [4, 5, 6, 7, 8, 9, 1, 2, 3],
-          [5, 6, 4, 8, 9, 7, 2, 3, 1],
-          [6, 4, 5, 9, 7, 8, 3, 1, 2],
-          [7, 8, 9, 1, 2, 3, 4, 5, 6],
-          [8, 9, 7, 2, 3, 1, 5, 6, 4],
-          [9, 7, 8, 3, 1, 2, 6, 4, 5]]))
+
+        console.log(race(720, 850, 70))
+
     </script>
 </body>
 </html>

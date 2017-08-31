@@ -9,60 +9,11 @@
 </head>
 <body>
     <div id="app">
-        <p v-show="!seen">haha</p>
-        <p @click="seen=!seen">click</p>
-        <ul>
-            <li @click="print(name.name)" v-for="name in names">
-                {{name.name}}
-            </li>
-        </ul>
-        <input @blur="printText" type="text" v-model="text">
-        <todo-item v-for="item in todoList" :todo="item"></todo-item>
-        <p :class="{active:isActive}" @click="printA($event)" >{{cap}}</p>
+
     </div>
     <script src="vue.js"></script>
     <script>
-        Vue.component('todo-item',{
-            props: ['todo'],
-            template: '<li>{{todo.text}}</li>'
-        })
-        var app = new Vue({
-            el: '#app',
-            data: {
-                seen: true,
-                names:[
-                    {name:1},
-                    {name:2},
-                    {name:3},
-                ],
-                text: 'hahah',
-                todoList:[
-                    {
-                        text: 1,
-                    },
-                    {
-                        text: 2,
-                    }
-                ],
-                isActive: true,
-            },
-            computed:{
-                cap(){
-                    return this.text + 'xucaihua'
-                }
-            },
-            methods:{
-                print(id){
-                    console.log(id)
-                },
-                printText(){
-                    console.log(this.text)
-                },
-                printA(e){
-                    console.log(e)
-                }
-            }
-        })
+
     </script>
 </body>
 </html>
