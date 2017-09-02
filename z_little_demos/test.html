@@ -9,37 +9,32 @@
 </head>
 <body>
     <script>
-        function validSolution(board){
-            var isNotSame = board.every(item=>[...new Set(item)].length===9)
-            if(!isNotSame) return false
-            var h1 = board[0].reduce((sum,item)=>sum+item);
-            var hIsEqual = board.every(item=>item.reduce((sum,i)=>sum+i)===h1)
-            if(!hIsEqual) return false;
-            var v1 = board.reduce((sum,item)=>{ return sum+item[0]},0);
-            if(v1!==h1) return false
-            for(let i=0;i<9;i++){
-              var tmpSum = board.reduce((sum,item)=>{return sum+item[i]},0);
-              if(v1!==tmpSum) return false
+        function WhatIsTheTime(timeInMirror){
+            var [hour,min] = timeInMirror.split(':').map(Number);
+            var trueHour = '';
+            var trueMin = '';
+            if(hour<11){
+                trueHour = 11-hour;
+            }else{
+              trueHour = 23-hour;
             }
-            var arr3_3 = [];
-            for(let i=0;i<3;i++){
-                for(let j=0;j<3;j++){
-                  arr3_3.push(board[i][j])
-                }
+            trueMin = 60-min;
+
+            if(trueMin===60){
+                trueMin = 0;
+                trueHour += 1;
             }
-            if([...new Set(arr3_3.slice(0,9))].length!==9) return false
-            return true
+            if(trueHour<10){
+                trueHour = '0'+trueHour
+            }
+            if(trueMin<10){
+              trueMin = '0'+trueMin
+            }
+
+            return `${trueHour}:${trueMin}`
         }
-        console.log(validSolution([
-          [1, 2, 3, 4, 5, 6, 7, 8, 9],
-          [2, 3, 1, 5, 6, 4, 8, 9, 7],
-          [3, 1, 2, 6, 4, 5, 9, 7, 8],
-          [4, 5, 6, 7, 8, 9, 1, 2, 3],
-          [5, 6, 4, 8, 9, 7, 2, 3, 1],
-          [6, 4, 5, 9, 7, 8, 3, 1, 2],
-          [7, 8, 9, 1, 2, 3, 4, 5, 6],
-          [8, 9, 7, 2, 3, 1, 5, 6, 4],
-          [9, 7, 8, 3, 1, 2, 6, 4, 5]]))
+        console.log(WhatIsTheTime("06:35"))
+
     </script>
 </body>
 </html>
