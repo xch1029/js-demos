@@ -9,45 +9,6 @@
 </head>
 <body>
     <script>
-<<<<<<< HEAD
-        function WhatIsTheTime(timeInMirror){
-            var [hour,min] = timeInMirror.split(':').map(Number);
-            var trueHour = '';
-            var trueMin = '';
-            if(hour<11){
-                trueHour = 11-hour;
-            }else{
-              trueHour = 23-hour;
-            }
-            trueMin = 60-min;
-
-            if(trueMin===60){
-                trueMin = 0;
-                trueHour += 1;
-            }
-            if(trueHour<10){
-                trueHour = '0'+trueHour
-            }
-            if(trueMin<10){
-              trueMin = '0'+trueMin
-            }
-
-            return `${trueHour}:${trueMin}`
-        }
-        console.log(WhatIsTheTime("06:35"))
-=======
-        function race(v1, v2, g) {
-            // your code
-            let time = g/(v2-v1)
-            let h = parseInt(time);
-            let m = (time-h)*60;
-            let s = (m - parseInt(m))*60;
-
-            return [h,m,s].map(x=>parseInt(x))
-        }
-
-        console.log(race(720, 850, 70))
->>>>>>> 16e2d771b4357604d1039eb329eb8c0a85ff9bd1
 
     </script>
 </body>
