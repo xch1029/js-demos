@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弹性button</title>
+    <style>
+        :root{
+            --pink: #FF8FDE;
+            --blue: #618BFF;
+
+            --animtime: 1.5s;
+            --easing: cubic-bezier(0.68, -0.15, 0.265, 1.35);
+            --iteration: 1;
+        }
+        .background {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: var(--blue);
+            transition: 1.5s var(--easing);
+        }
+        .background--on {
+            background: var(--pink);
+            transition: 1.5s var(--easing);
+        }
+        .toggle-body {
+            width: 7rem;
+            height: 4rem;
+            position: absolute;
+            top: calc(50% - 4rem / 2);
+            left: calc(50% - 7rem / 2);
+            background: white;
+            border-radius: 2rem;
+            animation: angle-reverse var(--animtime) var(--easing);
+        }
+        .toggle-body--on {
+            animation: angle var(--animtime) var(--easing);
+            animation-direction: alternate;
+        }
+        .toggle-btn {
+            width: 2rem;
+            height: 2rem;
+            position: absolute;
+            top: calc(50% - 2rem / 2);
+            left: calc(27% - 2rem / 2);
+            background: white;
+            border-radius: 2rem;
+            background: var(--blue);
+            cursor: pointer;
+            transform: translateX(0);
+            transition: var(--animtime) var(--easing);
+        }
+        .toggle-btn--on {
+            transition: var(--animtime) var(--easing);
+            transform: translateX(150%);
+            background: var(--pink);
+        }
+        @keyframes angle {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(45deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+        @keyframes angle-reverse {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(-45deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="toggle-body">
+            <div class="toggle-btn"></div>
+        </div>
+    </div>
+    <script>
+      const background = document.querySelector('.background');
+      const toggleBody = document.querySelector('.toggle-body');
+      const toggleBtn = document.querySelector('.toggle-btn');
+
+      toggleBtn.addEventListener('click', () => {
+        background.classList.toggle('background--on');
+        toggleBody.classList.toggle('toggle-body--on');
+        toggleBtn.classList.toggle('toggle-btn--on');
+        toggleBtn.classList.toggle('toggle-btn--scale');
+      });
+    </script>
+</body>
+</html>
