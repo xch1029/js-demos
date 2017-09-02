@@ -9,3 +9,8 @@ function sortArray(array) {
 function getCount(str){
   return (str.match(/[aeiou]/ig||[])).length;
 }
+
+//3.传入小时，返回时分秒
+function time(h){
+  return [Math.floor(time),Math.floor(time*60%60),Math.floor(time*3600%60)]
+}
