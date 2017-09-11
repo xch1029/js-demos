@@ -14,3 +14,15 @@ function getCount(str){
 function time(h){
   return [Math.floor(time),Math.floor(time*60%60),Math.floor(time*3600%60)]
 }
+//4.大数据相加
+function sumString(a,b){
+  var res = '',c = 0;
+  a = a.split('');
+  b = b.split('');
+  while(a.length || b.length || c){
+    c += ~~a.pop() + ~~b.pop();
+    res = c % 10 + res;
+    c = c > 9;
+  }
+  return res.replace(/^0+/,'');
+}
