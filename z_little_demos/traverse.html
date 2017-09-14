@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>遍历dom树(递归)</title>
+</head>
+<body>
+    <div>
+        <p>
+            <a href=""></a>
+            <a href=""></a>
+        </p>
+        <p>
+            <span>
+                <a href=""></a>
+            </span>
+        </p>
+    </div>
+    <script>
+        //需要多看几遍，很强大的递归
+        const div = document.querySelector('div');
+        function Traverse(p_element,p_callback) {
+            p_callback(p_element);
+            var list = p_element.children;
+            for (var i = 0; i < list.length; i++) {
+                Traverse(list[i],p_callback);  // recursive call
+            }
+        }
+        function getName(a){
+            console.log(a)
+        }
+        Traverse(div,getName)
+    </script>
+</body>
+</html>
