@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用css画图形</title>
+    <style>
+        .circle{
+            width: 100px;
+            height: 100px;
+            background: #6fee1d;
+            border-radius: 50px;
+        }
+        .oval{
+            width: 200px;
+            height: 100px;
+            background: #e9880c;
+            border-radius: 100px / 50px;
+        }
+        .triangle{
+            width: 0;
+            height: 0;
+            border-bottom: 100px solid #fcf706;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+        }
+        .diamond{
+            width: 100px;
+            height: 100px;
+            background: #8e00ff;
+            transform: rotate(-45deg);
+            transform-origin: 50% 50%;
+        }
+        .trapezium{
+            width: 100px;
+            height: 0;
+            border-bottom: 100px solid #dc2500;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+        }
+        .ring{
+            width: 100px;
+            height: 100px;
+            background: black;
+            border-radius: 80px;
+            border: 5px #667d32 solid;
+        }
+        .parallelogram{
+            width: 120px;
+            height: 80px;
+            margin-left: 10px;
+            background-color: #2eda01;
+            transform: skew(30deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="circle"></div>
+    <div class="oval"></div>
+    <div class="triangle"></div>
+    <div class="diamond"></div>
+    <div class="trapezium"></div>
+    <div class="ring"></div>
+    <div class="parallelogram"></div>
+</body>
+</html>
