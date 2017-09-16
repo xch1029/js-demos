@@ -1,0 +1,3 @@
+2017/9/16
+    1js30里的视频播放器未完成
+    2animation_countdown的js未学习
