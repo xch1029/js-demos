@@ -13,6 +13,7 @@ var app = new Vue({
         this.updateClock();
     },
     methods: {
+        //
         updateClock(){
             var ctx = this;
             setInterval(function(){
