@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>加载</title>
+    <style>
+        :root{
+            --border-radius: 12px;
+            --skew: -12deg;
+            --brand-color: #0c55fb;
+        }
+        .wyre-cards {
+            position: fixed;
+            width: 120px;
+            height: 120px;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        .card{
+            background-color: var(--brand-color);
+            height: 50px;
+            width: 40px;
+            margin-bottom: 2px;
+            position: absolute;
+            z-index: 3;
+
+            box-shadow: 0 5px 14px 0 rgba(1, 1, 1, 0.2);
+            border-radius: var(--border-radius) 0 var(--border-radius) 0;
+            transform: skewX(var(--skew));
+            animation: float 3s infinite ease-in-out;
+        }
+        .card:nth-child(2) {
+            left: 20px;
+            top: 15px;
+            z-index: 2;
+            background-color: #0092ff;
+            animation: float 3s infinite ease-in-out;
+            animation-delay: 0.1s;
+        }
+        .card:nth-child(3) {
+            left: 40px;
+            top: 30px;
+            z-index: 1;
+            background-color: #94c5ff;
+            animation: float 3s infinite ease-in-out;
+            animation-delay: 0.2s;
+        }
+        @keyframes float {
+            0% {transform: skew(var(--skew)) translateY(0);}
+            50% {transform: skew(var(--skew)) translateY(20px);}
+            100% {transform: skew(var(--skew)) translateY(0);}
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wyre-cards">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+    </div>
+</body>
+</html>
