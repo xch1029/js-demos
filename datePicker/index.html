@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>datePicker时间组件</title>
+    <link rel="stylesheet" href="datePicker.css">
+    <style>
+        .DatePicker{
+            text-align: center;
+            width: 400px;
+            margin: 20px auto;
+            height: 30px;
+            line-height: 30px;
+            display: block;
+            border: 1px solid #ddd;
+        }
+        .DatePicker:focus{
+            box-shadow: 0 0 2px #1abc9c;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" class="DatePicker" readonly placeholder="点击选择日期">
+    <script src="date.js"></script>
+    <script>
+      date.init('.DatePicker');
+    </script>
+</body>
+</html>

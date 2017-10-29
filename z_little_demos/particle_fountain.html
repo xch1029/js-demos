@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>粒子喷泉</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        var canvas = document.querySelector('#canvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        var c = canvas.getContext('2d');
+
+        window.addEventListener('resize',() => {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        })
+
+        var colors = [
+          "#BADA55",
+          "#76eec6",
+          "#ff4040"
+        ]
+
+        // object
+        function Particle(x, y, radius) {
+            this.x = x;
+            this.y = y;
+            this.vx = Math.random() * 8 -4;
+            this.vy = Math.random() * -14 -7;
+            this.radius = radius;
+            this.velocity = 0.05;
+            this.lineWidth = 5;
+            this.randomColor = Math.floor(Math.random() * colors.length);
+            this.color = colors[this.randomColor];
+
+            this.update = () => {
+              this.x += this.vx;
+              this.vy += 0.1;
+              this.y += this.vy;
+              if(this.y > window.innerHeight){
+                this.y = canvas.height;
+                this.x = canvas.width/2;
+                this.vy = Math.random() * -14 - 7;
+              }
+              this.draw()
+            }
+            this.draw = () => {
+                c.beginPath();
+                c.strokeStyle = this.color;
+                c.arc(this.x,this.y,10,0,2*Math.PI,false);
+                c.stroke();
+                c.closePath()
+            }
+        }
+
+        var particles = []
+
+        function init(){
+          for(let i = 0;i<100;i++){
+            particles.push(new Particle(canvas.width/2,canvas.height,10))
+          }
+        }
+
+        function animate(){
+          c.clearRect(0,0,canvas.width,canvas.height)
+          particles.forEach(item => {
+            item.update()
+          })
+          requestAnimationFrame(animate)
+        }
+
+        init();
+        animate();
+
+        /*
+        * 值得多写几遍
+        *
+        *
+        *
+        * */
+    </script>
+</body>
+</html>
