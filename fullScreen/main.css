@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    background: #000;
+    color: #fff;
+    font-family: Avenir, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+#gallery {
+    display: flex;
+    width: 100%;
+}
+#gallery figure {
+    margin: 0;
+    flex: 1;
+    text-align: center;
+    line-height: 0;
+    position: relative;
+}
+#gallery figure img {
+    pointer-events: none;
+}
+#gallery.fs figure {
+    cursor: pointer;
+}
+#gallery.fs figure:after {
+    display: block;
+    content: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/arrows.svg");
+    width: 30px;
+    position: absolute;
+    top: 5%;
+    right: 12%;
+    opacity: .1;
+    transition: .3s opacity;
+}
+#gallery.fs figure:hover:after {
+    opacity: .5;
+}
+#gallery figure figcaption {
+    text-align: left;
+    line-height: 1.4;
+    padding: 1rem;
+    border-spacing: 1rem;
+    position: fixed;
+    bottom: 0;
+}
+#gallery.fs figure figcaption {
+    display: none;
+}
+#gallery figure figcaption p {
+    display: table-row;
+}
+#gallery figure figcaption span {
+    display: table-cell;
+}
+#gallery figure figcaption span:first-of-type {
+    font-weight: bolder;
+    padding-right: 1rem;
+}
+
+#gallery.full figure {
+    height: 100vh;
+    background: #000;
+    line-height: 1.5;
+}
+#gallery.full.fs figcaption {
+    display: table;
+}
+
+
+#gallery.fs figure {
+    width: 80%;
+}
+#gallery.fs figure img {
+    width: 60%;
+    height: auto;
+}
+
+/*
+    这里的做法：切换.full类,但是当全屏样式下时，按esc退出全屏时，.full并不会移除
+    todo：方法一：可以试试伪类:-webkit-full-screen，考虑兼容性，加前缀
+    todo：方法二：监听esc的点击，一旦点击就移除.full(这个方法好点，更可靠)
+    todo：方法三：监听fullscreenchange，好像更可靠,兼容性
+    todo：有点小坑，自己尝试
+*/
+
+/*
+document.addEventListener("fullscreenchange", function( event ) {
+
+    // The event object doesn't carry information about the fullscreen state of the browser,
+    // but it is possible to retrieve it through the fullscreen API
+    if ( document.fullscreen ) {
+
+        // The target of the event is always the document,
+        // but it is possible to retrieve the fullscreen element through the API
+        document.fullscreenElement;
+    }
+
+});
+*/
