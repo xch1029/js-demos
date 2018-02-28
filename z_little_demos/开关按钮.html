@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        :root {
+            font-size: 16px;
+            --red: #FF3C2D;
+            --green: #00FF99;
+            --blue: #0E5EF8;
+            --pink: #CB2D6F;
+            --black: #212121;
+            --white: #ffffff;
+        }
+
+        body {
+            background: black;
+        }
+
+        .toggler {
+            margin: 200px auto;
+            width: 100px;
+            height: 50px;
+            background: var(--black);
+            position: relative;
+        }
+
+        .toggler button {
+            cursor: pointer;
+            display: inline-block;
+            float: left;
+            text-align: center;
+            vertical-align: top;
+            width: 50px;
+            height: 50px;
+            border: none;
+            font-weight: bold;
+            transition: all .2s ease-in-out .2s;
+            background: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .toggler__play {
+            color: var(--black);
+        }
+
+        .toggler__play:after {
+            content: 'Play';
+        }
+
+        .toggler__pause {
+            color: var(--white);
+        }
+
+        .toggler__pause:after {
+            content: 'Pause';
+        }
+
+        .toggler.playing .toggler__play {
+            color: var(--white);
+        }
+
+        .toggler.playing .toggler__pause {
+            color: var(--black);
+        }
+
+        .toggler span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            z-index: 1;
+            background: var(--green);
+            transition: all .5s cubic-bezier(.666, -.666, .2666, 1.666);
+        }
+
+        .toggler.playing .toggler__helper {
+            background: var(--red);
+            left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="toggler">
+        <button class="toggler__play"></button>
+        <button class="toggler__pause"></button>
+        <span class="toggler__helper"></span>
+    </div>
+    <script>
+        const toggler = document.querySelector('.toggler')
+        toggler.addEventListener('click', (e) => {
+            if (e.target.tagName == 'BUTTON') {
+                toggler.classList.toggle('playing')
+            }
+        })
+    </script>
+</body>
+
+</html>
