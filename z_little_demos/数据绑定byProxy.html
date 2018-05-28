@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<p class="js-bound-quote">My favorite {{ movie }} quote is "{{ quote }}".</p>
+	<script>
+		let data_blob = {
+			movie: 'Iron Man',
+			quote: 'They say that the best weapon is the one you never have to fire.'
+		}
+
+		const quote_data = new Proxy(data_blob, {
+			set: (target, property, value) => {
+				target[property] = value
+				quote_node.render(data_blob)
+				return true
+			}
+		})
+
+		const quote_node = document.querySelector('.js-bound-quote')
+
+		quote_node.template = quote_node.innerHTML
+		quote_node.render = function render(data) {
+			this.innerHTML = this.template.replace(/\{\{\s?(\w+)\s?\}\}/g, (match, variable) => {
+				return data[variable] || ''
+			})
+		}
+
+		const quotes = [
+			"What is the point of owning a race car if you can't drive it?",
+			"Give me a scotch, I'm starving.",
+			"I'm a huge fan of the way you lose control and turn into an enourmous green rage monster.",
+			"I already told you, I don't want to join your super secret boy band.",
+			"You know, it's times like these when I realize what a superhero I am."
+		]
+
+		window.setInterval(() => {
+			const quote_number = Math.floor(Math.random() * quotes.length)
+			quote_data.quote = quotes[quote_number]
+		}, 2000)
+		// https://jack.ofspades.com/frameworkless-javascript-part-3-one-way-data-binding/
+	</script>
+</body>
+
+</html>
